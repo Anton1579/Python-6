@@ -150,7 +150,49 @@ print(ford.name, ford.color, ford.speed, ford.is_police)
 print(ford.go(), ford.turn_left(), ford.stop())
 
 
+# 5. Реализовать класс Stationery (канцелярская принадлежность). Определить в нем
+# атрибут title (название) и метод draw (отрисовка). Метод выводит сообщение
+# “Запуск отрисовки.” Создать три дочерних класса Pen (ручка), Pencil (карандаш),
+# Handle (маркер). В каждом из классов реализовать переопределение метода draw.
+# Для каждого из классов методы должен выводить уникальное сообщение.
+# Создать экземпляры классов и проверить, что выведет описанный метод для каждого
+# экземпляра.
 
+class Stationery:
+    def __init__(self, title):
+        self.title = title
+
+    def brow(self):
+        return f'Запуск отрисовки'
+
+class Pen(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+
+    def brow(self):
+        return f'Вы взяли {self.title}'
+
+class Pensel(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+
+    def brow(self):
+        return f'Вы взяли {self.title}'
+
+class Handle(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+
+    def brow(self):
+        return f'Вы взяли {self.title}'
+
+
+my_pen = Pen('Карандаш')
+my_pensel = Pensel('Ручкy')
+my_handle = Handle('Маркер')
+print(my_pen.brow())
+print(my_pensel.brow())
+print(my_handle.brow())
 
 
 
