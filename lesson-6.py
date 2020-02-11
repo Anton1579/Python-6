@@ -87,7 +87,67 @@ class Possition(Worker):
 user = Possition('Marat', 'Popov', 'Designer', 50000, 8000)
 print(f' Name: {user.get_full_name()} \n Position: {user.position} \n Salary: {user.get_total_income()}')
 
+# 4. Реализуйте базовый класс Car. У данного класса должны быть следующие атрибуты:
+# speed, color, name, is_police (булево). А также методы: go, stop, turn(direction),
+# которые должны сообщать, что машина поехала, остановилась, повернула (куда).
+# Опишите несколько дочерних классов: TownCar, SportCar, WorkCar, PoliceCar.
+# Добавьте в базовый класс метод show_speed, который должен показывать текущую
+# скорость автомобиля. Для классов TownCar и WorkCar переопределите метод show_speed.
+# При значении скорости свыше 60 (TownCar) и 40 (WorkCar) должно выводиться сообщение
+# о превышении скорости.
+# Создайте экземпляры классов, передайте значения атрибутов. Выполните доступ к атрибутам,
+# выведите результат. Выполните вызов методов и также покажите результат.
 
+class Cars:
+
+    def __init__(self, name, speed, color, is_police = 40):
+        self.name = name
+        self.speed = speed
+        self.color = color
+        self.is_police = is_police
+
+    def go(self):
+        return 'Вперед -'
+
+    def stop(self):
+        return 'Стоп'
+
+    def turn_left(self):
+        return 'Поворот на лево -'
+
+    def turn_rigth(self):
+        return 'Поворот на право -'
+
+class TownCar(Cars):
+
+    def __init__(self, name, speed, color, family = 60):
+        super().__init__(name, speed, color)
+        self.family = family
+
+class SportCar(Cars):
+    def __init__(self, name, speed, color):
+        super().__init__(name, speed, color)
+
+class WorkCar(Cars):
+    def __init__(self, name, speed, color, is_police):
+        super().__init__(name, speed, color, is_police)
+
+class PoliceCar(Cars):
+    def __init__(self, name, speed, color):
+        super().__init__(name, speed, color, 90)
+
+bmw = TownCar('BMW', 60, 'Black')
+porshe = SportCar('Porshe', 180, 'Yellow')
+audi = WorkCar('Audi', 90, 'Grey', 60)
+ford = PoliceCar('Ford', 180, 'red')
+print(bmw.name, bmw.color, bmw.speed, bmw.is_police)
+print(bmw.go(), bmw.turn_left(), bmw.turn_rigth(), bmw.stop())
+print(porshe.name, porshe.color, porshe.speed, porshe.is_police)
+print(porshe.go(), porshe.turn_rigth(), porshe.stop())
+print(audi.name, audi.color, audi.speed, audi.is_police)
+print(audi.go(), audi.turn_left(), audi.stop())
+print(ford.name, ford.color, ford.speed, ford.is_police)
+print(ford.go(), ford.turn_left(), ford.stop())
 
 
 
